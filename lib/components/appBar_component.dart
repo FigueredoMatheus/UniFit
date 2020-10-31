@@ -9,7 +9,6 @@ PreferredSizeWidget appBar({
   Color titleTextColor = Colors.black,
   @required Color actionTextColor,
 }) {
-  double textScaleFactor = (MediaQuery.of(context).textScaleFactor * 0 + 1);
   return AppBar(
     leadingWidth: 79,
     titleSpacing: 1,
@@ -21,21 +20,26 @@ PreferredSizeWidget appBar({
         style: TextStyle(
           fontFamily: 'Inter',
           color: actionTextColor,
-          fontSize: 16 * textScaleFactor,
+          fontSize: 16,
         ),
       ),
     ),
     centerTitle: true,
     title: Text(
       title,
+      textScaleFactor: 1,
       style: TextStyle(
         color: titleTextColor,
         fontFamily: 'Inter',
-        fontSize: 30 * textScaleFactor,
+        fontSize: 30,
         fontWeight: FontWeight.w600,
       ),
     ),
     backgroundColor: backgroundColor,
     elevation: 0,
   );
+}
+
+double appBarSize(PreferredSizeWidget appBar) {
+  return appBar.preferredSize.height;
 }

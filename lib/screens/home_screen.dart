@@ -1,42 +1,41 @@
+import 'package:UniFit/components/alertDialog_component.dart';
 import 'package:UniFit/components/appBar_component.dart';
 import 'package:UniFit/screens/imc_tmb_screen.dart';
 import 'package:UniFit/screens/login_screen.dart';
 import 'package:UniFit/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 import '../components/homeCard_component.dart';
+import 'fatColories_screen.dart';
 import 'meals_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final PreferredSizeWidget scaffoldAppBar = appBar(
+      actionTextColor: Color.fromRGBO(93, 176, 117, 1),
+      context: context,
+      iconText: 'Sair',
+      onPressed: () {
+        showDialog(context: context, builder: (_) => AlertDialogComponent());
+      },
+      title: 'UniFit',
+    );
+
     return SafeArea(
       child: Scaffold(
-        appBar: appBar(
-          actionTextColor: Color.fromRGBO(93, 176, 117, 1),
-          context: context,
-          iconText: 'Sair',
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => LoginScreen(),
-              ),
-            );
-          },
-          title: 'UniFit',
-        ),
+        appBar: scaffoldAppBar,
         body: Column(children: [
           CardComponent(
-            title: 'Meu Perfil',
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ProfileScreen(),
-                ),
-              );
-            },
-          ),
+              appBarSize: appBarSize(scaffoldAppBar),
+              title: 'Meu Perfil',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProfileScreen(),
+                  ),
+                );
+              }),
           CardComponent(
             title: 'Calculadora de IMC & TMB',
             onTap: () {
@@ -50,7 +49,14 @@ class HomeScreen extends StatelessWidget {
           ),
           CardComponent(
             title: 'Calculadora de Gordura e Calorias',
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => FatCaloriesScreen(),
+                ),
+              );
+            },
           ),
           CardComponent(
             title: 'Refeições',

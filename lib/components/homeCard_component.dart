@@ -3,24 +3,21 @@ import 'package:flutter/material.dart';
 class CardComponent extends StatelessWidget {
   final String title;
   final Function onTap;
+  final double appBarSize;
 
-  CardComponent({this.onTap, this.title});
+  CardComponent({
+    this.onTap,
+    this.title,
+    this.appBarSize,
+  });
 
   @override
   Widget build(BuildContext context) {
-    bool containerTextSize() {
-      if (MediaQuery.of(context).textScaleFactor > 1 && title != 'Meu Perfil' ||
-          title != 'Refeições')
-        return true;
-      else
-        return false;
-    }
-
     final double screenAvaliableHeight =
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
 
     final double screenAvaliableWidth = MediaQuery.of(context).size.width;
-//MediaQuery.of(context).textScaleFactor
+
     return InkWell(
       borderRadius: BorderRadius.circular(8),
       onTap: onTap,
@@ -36,8 +33,8 @@ class CardComponent extends StatelessWidget {
           child: LayoutBuilder(builder: (context, constraints) {
             return Container(
               width: MediaQuery.of(context).textScaleFactor > 1 &&
-                          title == 'Calculadora de IMC & TMB' ||
-                      title == 'Calculadora de Gordura e Calorias'
+                      (title == 'Calculadora de IMC & TMB' ||
+                          title == 'Calculadora de Gordura e Calorias')
                   ? constraints.maxWidth * 0.95
                   : constraints.maxWidth * 0.69,
               height: MediaQuery.of(context).textScaleFactor > 1 &&
@@ -45,7 +42,6 @@ class CardComponent extends StatelessWidget {
                       title == 'Calculadora de Gordura e Calorias'
                   ? constraints.maxHeight * 0.90
                   : constraints.maxHeight * 0.74,
-              color: Colors.red,
               child: MediaQuery.of(context).textScaleFactor > 1
                   ? FittedBox(
                       child: Center(

@@ -46,7 +46,6 @@ class ComponentTextField extends StatelessWidget {
           autovalidateMode: AutovalidateMode.onUserInteraction,
           controller: controller,
           validator: (value) {
-            print('Scal: ${MediaQuery.of(context).textScaleFactor}');
             if (value.isEmpty) {
               return erroEmptyTextField;
             } else if (erroUsedText != null &&

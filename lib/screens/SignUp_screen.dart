@@ -79,6 +79,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 child: Form(
                   key: _passwordFormKey,
                   child: TextFormField(
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
                     controller: passwordController,
                     validator: (value) {
                       if (value.isEmpty) {
@@ -119,6 +120,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   key: _confirmPasswordFormKey,
                   child: TextFormField(
                     controller: confirmPasswordController,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: (value) {
                       if (value.isEmpty) {
                         return 'Por favor, insira a senha de confirmação';
@@ -168,10 +170,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       water: '0',
                     );
                     userList.add(newUser);
-                    userList.forEach((element) {
-                      print(
-                          '${element.email}, ${element.name}, ${element.password}');
-                    });
+                    userList.forEach((element) {});
                     Navigator.push(
                       context,
                       MaterialPageRoute(

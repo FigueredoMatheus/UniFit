@@ -3,9 +3,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class ChartComponent extends StatelessWidget {
-  final double width = 120;
-  final double height = 120;
-
   final String statusText;
   final double imcValue;
   final double chartValue;
@@ -17,13 +14,18 @@ class ChartComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double textScaleFactor = (MediaQuery.of(context).textScaleFactor * 0 + 1);
+    final double screenAvaliableHeight =
+        MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
+
+    final double screenAvaliableWidth = MediaQuery.of(context).size.width;
+
     return Center(
       child: Stack(
         children: [
           Container(
-            width: width,
-            height: height,
+            width: screenAvaliableWidth * 0.375,
+            height: screenAvaliableWidth * 0.375,
+            //height: screenAvaliableHeight * 0.21,
             child: CustomPaint(
               painter: ChartPainter(
                 context: context,
@@ -32,9 +34,11 @@ class ChartComponent extends StatelessWidget {
             ),
           ),
           Positioned(
+            top: screenAvaliableHeight * 0.07,
+            right: screenAvaliableWidth * 0.056,
             child: Container(
-              width: 85,
-              height: 30,
+              width: screenAvaliableWidth * 0.265,
+              height: screenAvaliableHeight * 0.052,
               child: FittedBox(
                 child: Column(
                   children: [
@@ -43,7 +47,7 @@ class ChartComponent extends StatelessWidget {
                       style: TextStyle(
                         color: Colors.black,
                         fontFamily: 'Inter',
-                        fontSize: 14 * textScaleFactor,
+                        fontSize: 14,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -52,7 +56,7 @@ class ChartComponent extends StatelessWidget {
                       style: TextStyle(
                         color: Color.fromARGB(153, 153, 153, 1),
                         fontFamily: 'Inter',
-                        fontSize: 10 * textScaleFactor,
+                        fontSize: 10,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
@@ -60,8 +64,6 @@ class ChartComponent extends StatelessWidget {
                 ),
               ),
             ),
-            top: height * 0.33,
-            right: width * 0.15,
           ),
         ],
       ),
@@ -84,7 +86,6 @@ class ChartPainter extends CustomPainter {
     var centerY = size.height / 2;
     var center = Offset(centerX, centerY);
     var radius = min(centerX, centerY);
-
     var outlineBackground = Paint()
       ..color = Color.fromRGBO(232, 232, 232, 1)
       ..style = PaintingStyle.stroke
@@ -96,10 +97,14 @@ class ChartPainter extends CustomPainter {
       ..strokeWidth = 5;
 
     canvas.drawCircle(center, radius, outlineBackground);
-    var foregroundOffset = Offset(1, 1);
+
+    var foregroundOffset = Offset(0, 0);
+    //var foregroundOffset = Offset(0, 10);
 
     canvas.drawArc(foregroundOffset & Size(size.width, size.height), -1.5,
         -chartValue, false, outlineForeground);
+    // canvas.drawArc(foregroundOffset & Size(size.width, size.height - 20), -1.5,
+    //     -chartValue, false, outlineForeground);
   }
 
   @override

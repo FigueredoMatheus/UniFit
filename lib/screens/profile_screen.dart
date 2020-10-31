@@ -8,36 +8,37 @@ class ProfileScreen extends StatelessWidget {
   final LoggedUser user = LoggedUser();
   @override
   Widget build(BuildContext context) {
-    double textScaleFactor = (MediaQuery.of(context).textScaleFactor * 0 + 1);
+    final PreferredSizeWidget scaffoldAppBar = appBar(
+      backgroundColor: Color.fromRGBO(93, 176, 117, 1),
+      context: context,
+      iconText: 'Voltar',
+      title: 'Perfil',
+      actionTextColor: Colors.white,
+      titleTextColor: Colors.white,
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => HomeScreen(),
+          ),
+        );
+      },
+    );
 
-    final double screenAvaliableHeight =
-        MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
+    final double screenAvaliableHeight = MediaQuery.of(context).size.height -
+        MediaQuery.of(context).padding.top -
+        appBarSize(scaffoldAppBar);
 
     final double screenAvaliableWidth = MediaQuery.of(context).size.width;
 
     return SafeArea(
       child: Scaffold(
-        appBar: appBar(
-          backgroundColor: Color.fromRGBO(93, 176, 117, 1),
-          context: context,
-          iconText: 'Voltar',
-          title: 'Perfil',
-          actionTextColor: Colors.white,
-          titleTextColor: Colors.white,
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => HomeScreen(),
-              ),
-            );
-          },
-        ),
+        appBar: scaffoldAppBar,
         body: Stack(
           children: [
             Container(
               width: double.infinity,
-              height: screenAvaliableHeight * 0.20,
+              height: screenAvaliableHeight * 0.25,
               color: Theme.of(context).backgroundColor,
             ),
             Column(

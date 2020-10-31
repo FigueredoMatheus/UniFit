@@ -36,10 +36,6 @@ class _LoginScreenState extends State<LoginScreen> {
         MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
 
     final double screenAvaliableWidth = MediaQuery.of(context).size.width;
-
-    print('Height: $screenAvaliableHeight');
-    print('Width: $screenAvaliableWidth');
-
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(

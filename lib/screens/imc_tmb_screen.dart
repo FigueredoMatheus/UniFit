@@ -36,13 +36,11 @@ class _ImcTmbScreenState extends State<ImcTmbScreen> {
     double value = 0;
 
     if (radioSex == 0) {
-      //Homens TMB = 66 + (13,8 x peso em kg.) + (5 x altura em cm) - (6,8 x idade em anos)
       value = 66 +
           (13.8 * double.parse(_pesoController.text)) +
           (5 * double.parse(_alturaController.text)) -
           (6.8 * double.parse(_idadeController.text));
     } else {
-      //Mulheres TMB = 655 + (9,6 x peso em kg.) + (1,8 x altura em cm) - (4,7 x idade em anos)
       value = 655 +
           (9.6 * double.parse(_pesoController.text)) +
           (1.8 * double.parse(_alturaController.text)) -
@@ -54,7 +52,6 @@ class _ImcTmbScreenState extends State<ImcTmbScreen> {
 
   double imcCalculator() {
     double value = 0;
-    //IMC = Peso ÷ (Altura × Altura)
 
     value = double.parse(_pesoController.text) /
         (double.parse(_alturaController.text) /
@@ -104,7 +101,6 @@ class _ImcTmbScreenState extends State<ImcTmbScreen> {
 
     final double screenAvaliableWidth = MediaQuery.of(context).size.width;
 
-    double textScaleFactor = (MediaQuery.of(context).textScaleFactor * 0 + 1);
     return Scaffold(
       appBar: appBar(
           actionTextColor: Theme.of(context).backgroundColor,
@@ -135,7 +131,7 @@ class _ImcTmbScreenState extends State<ImcTmbScreen> {
                               sexList[index],
                               style: TextStyle(
                                 fontFamily: 'Inter',
-                                fontSize: 16 * textScaleFactor,
+                                fontSize: 16,
                                 color: Color.fromRGBO(189, 189, 189, 1),
                                 fontWeight: FontWeight.w500,
                               ),
@@ -161,14 +157,14 @@ class _ImcTmbScreenState extends State<ImcTmbScreen> {
                   .toList(),
             ),
             Container(
-              height: screenAvaliableHeight * 0.082,
+              height: 50,
               width: screenAvaliableWidth * 0.952,
               decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
                   color: Color.fromRGBO(232, 232, 232, 1),
                   borderRadius: BorderRadius.circular(100)),
               padding: const EdgeInsets.only(left: 19),
-              margin: const EdgeInsets.all(10),
+              margin: const EdgeInsets.all(5),
               child: Form(
                 key: _idadeFormKey,
                 child: TextFormField(
@@ -186,7 +182,7 @@ class _ImcTmbScreenState extends State<ImcTmbScreen> {
                   ],
                   cursorColor: Theme.of(context).backgroundColor,
                   style: TextStyle(
-                    fontSize: 20 * textScaleFactor,
+                    fontSize: 20,
                   ),
                   decoration: InputDecoration(
                     hintText: 'Idade',
@@ -203,14 +199,14 @@ class _ImcTmbScreenState extends State<ImcTmbScreen> {
               ),
             ),
             Container(
-              height: screenAvaliableHeight * 0.082,
+              height: 50,
               width: screenAvaliableWidth * 0.952,
               decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
                   color: Color.fromRGBO(232, 232, 232, 1),
                   borderRadius: BorderRadius.circular(100)),
               padding: const EdgeInsets.only(left: 19),
-              margin: const EdgeInsets.all(10),
+              margin: const EdgeInsets.all(5),
               child: Form(
                 key: _pesoFormKey,
                 child: TextFormField(
@@ -228,7 +224,7 @@ class _ImcTmbScreenState extends State<ImcTmbScreen> {
                   ],
                   cursorColor: Theme.of(context).backgroundColor,
                   style: TextStyle(
-                    fontSize: 20 * textScaleFactor,
+                    fontSize: 20,
                   ),
                   decoration: InputDecoration(
                     hintText: 'Peso Kg',
@@ -245,14 +241,14 @@ class _ImcTmbScreenState extends State<ImcTmbScreen> {
               ),
             ),
             Container(
-              height: screenAvaliableHeight * 0.082,
+              height: 50,
               width: screenAvaliableWidth * 0.952,
               decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
                   color: Color.fromRGBO(232, 232, 232, 1),
                   borderRadius: BorderRadius.circular(100)),
               padding: const EdgeInsets.only(left: 19),
-              margin: const EdgeInsets.all(10),
+              margin: const EdgeInsets.all(5),
               child: Form(
                 key: _alturaFormKey,
                 child: TextFormField(
@@ -270,7 +266,7 @@ class _ImcTmbScreenState extends State<ImcTmbScreen> {
                   ],
                   cursorColor: Theme.of(context).backgroundColor,
                   style: TextStyle(
-                    fontSize: 20 * textScaleFactor,
+                    fontSize: 20,
                   ),
                   decoration: InputDecoration(
                     hintText: 'Altura cm',
@@ -298,12 +294,12 @@ class _ImcTmbScreenState extends State<ImcTmbScreen> {
             ),
             ActivityFactorGrid(callBack: callback, setState: _setState),
             Container(
-              height: screenAvaliableHeight * 0.082,
+              height: 50,
               width: screenAvaliableWidth * 0.952,
               child: RaisedButton(
                 onPressed: () {
-                  if (_idadeFormKey.currentState.validate() ||
-                      _pesoFormKey.currentState.validate() ||
+                  if (_idadeFormKey.currentState.validate() &&
+                      _pesoFormKey.currentState.validate() &&
                       _alturaFormKey.currentState.validate()) {
                     setState(() {
                       _imcValue = imcCalculator();
@@ -318,7 +314,7 @@ class _ImcTmbScreenState extends State<ImcTmbScreen> {
                   'Calcular',
                   style: TextStyle(
                     fontFamily: 'Inter',
-                    fontSize: 16 * textScaleFactor,
+                    fontSize: 16,
                     fontWeight: FontWeight.w600,
                     color: Colors.white,
                   ),
@@ -335,9 +331,10 @@ class _ImcTmbScreenState extends State<ImcTmbScreen> {
                   children: [
                     Text(
                       'IMC:',
+                      textScaleFactor: 1,
                       style: TextStyle(
                           fontFamily: 'Inter',
-                          fontSize: 16 * textScaleFactor,
+                          fontSize: 16,
                           fontWeight: FontWeight.w600,
                           color: Theme.of(context).backgroundColor),
                     ),
@@ -358,15 +355,16 @@ class _ImcTmbScreenState extends State<ImcTmbScreen> {
                   children: [
                     Text(
                       'TMB',
+                      textScaleFactor: 1,
                       style: TextStyle(
                           fontFamily: 'Inter',
-                          fontSize: 16 * textScaleFactor,
+                          fontSize: 16,
                           fontWeight: FontWeight.w600,
                           color: Theme.of(context).backgroundColor),
                     ),
                     Container(
-                      width: 80,
-                      height: 32,
+                      width: screenAvaliableWidth * 0.25,
+                      height: screenAvaliableHeight * 0.058,
                       child: FittedBox(
                         child: Column(
                           children: [
@@ -374,7 +372,7 @@ class _ImcTmbScreenState extends State<ImcTmbScreen> {
                               _tmbValue.toStringAsFixed(3),
                               style: TextStyle(
                                 fontFamily: 'Inter',
-                                fontSize: 16 * textScaleFactor,
+                                fontSize: 16,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
@@ -382,7 +380,7 @@ class _ImcTmbScreenState extends State<ImcTmbScreen> {
                               'Kcal por dia',
                               style: TextStyle(
                                 fontFamily: 'Inter',
-                                fontSize: 10 * textScaleFactor,
+                                fontSize: 10,
                                 fontWeight: FontWeight.w400,
                                 color: Color.fromRGBO(153, 153, 153, 1),
                               ),
@@ -392,7 +390,7 @@ class _ImcTmbScreenState extends State<ImcTmbScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: 120,
+                      height: 155,
                     ),
                   ],
                 ),

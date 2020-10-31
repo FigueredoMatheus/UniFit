@@ -24,18 +24,19 @@ class MealsComponent extends StatelessWidget {
         Center(
           child: Text(
             titleText,
+            textScaleFactor: 1,
             style: TextStyle(
                 fontFamily: 'Inter',
-                fontSize: 20 * (MediaQuery.of(context).textScaleFactor * 0 + 1),
+                fontSize: 20,
                 fontWeight: FontWeight.w500,
                 color: Theme.of(context).backgroundColor),
           ),
         ),
         SizedBox(
-          height: 15,
+          height: 10,
         ),
         Row(
-          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             MealsCardComponent(
               imagePath: imageLeftAsset,
