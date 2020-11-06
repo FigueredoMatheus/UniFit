@@ -347,9 +347,6 @@ class _ImcTmbScreenState extends State<ImcTmbScreen> {
                       chartValue: chartValue(_imcValue),
                       statusText: chartStatus,
                     ),
-                    // SizedBox(
-                    //   height: 20,
-                    // ),
                   ],
                 ),
                 Column(
@@ -390,9 +387,6 @@ class _ImcTmbScreenState extends State<ImcTmbScreen> {
                         ),
                       ),
                     ),
-                    // SizedBox(
-                    //   height: 155,
-                    // ),
                   ],
                 ),
               ],

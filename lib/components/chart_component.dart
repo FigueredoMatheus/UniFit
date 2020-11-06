@@ -25,7 +25,6 @@ class ChartComponent extends StatelessWidget {
           Container(
             width: screenAvaliableWidth * 0.375,
             height: screenAvaliableWidth * 0.375,
-            //height: screenAvaliableHeight * 0.21,
             child: CustomPaint(
               painter: ChartPainter(
                 context: context,
@@ -99,12 +98,9 @@ class ChartPainter extends CustomPainter {
     canvas.drawCircle(center, radius, outlineBackground);
 
     var foregroundOffset = Offset(0, 0);
-    //var foregroundOffset = Offset(0, 10);
 
     canvas.drawArc(foregroundOffset & Size(size.width, size.height), -1.5,
         -chartValue, false, outlineForeground);
-    // canvas.drawArc(foregroundOffset & Size(size.width, size.height - 20), -1.5,
-    //     -chartValue, false, outlineForeground);
   }
 
   @override
