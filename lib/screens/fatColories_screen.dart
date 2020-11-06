@@ -43,8 +43,7 @@ class _FatCaloriesScreenState extends State<FatCaloriesScreen> {
       double pescoco = double.parse(_pescocoController.text);
       double altura = double.parse(_alturaController.text);
       double cintura = double.parse(_cinturaController.text);
-      // double result = cintura - pescoco;
-      // value = ((86.010 * log(result)) - (70.041 * log(altura))) + 30.30;
+
       value = (quadril / altura) * sqrt(altura) + log(cintura * pescoco);
       if (value < 0) {
         value = -value;
@@ -312,11 +311,11 @@ class _FatCaloriesScreenState extends State<FatCaloriesScreen> {
                 width: screenAvaliableWidth * 0.952,
                 child: RaisedButton(
                   onPressed: () {
-                    if (_pescocoFormKey.currentState.validate() &&
+                    if (_alturaFormKey.currentState.validate() &&
                         _pesoFormKey.currentState.validate() &&
                         _cinturaFormKey.currentState.validate() &&
-                        _quadrilFormKey.currentState.validate() &&
-                        _alturaFormKey.currentState.validate()) {
+                        _pescocoFormKey.currentState.validate() &&
+                        _quadrilFormKey.currentState.validate()) {
                       setState(() {
                         fat = fatPercentageValue();
                         caloriesRecommended = caloriesRecommendedValue();
