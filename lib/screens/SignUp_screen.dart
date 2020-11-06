@@ -154,14 +154,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 height: screenAvaliableHeight * 0.030,
               ),
               ButtonComponent(
-                  onPressed: () {
-                    if (!_nameFormKey.currentState.validate() ||
-                        !_emailFormKey.currentState.validate() ||
-                        !_passwordFormKey.currentState.validate() ||
-                        !_confirmPasswordFormKey.currentState.validate()) {
-                      return true;
-                    }
-
+                onPressed: () {
+                  if (_nameFormKey.currentState.validate() &&
+                      _emailFormKey.currentState.validate() &&
+                      _passwordFormKey.currentState.validate() &&
+                      _confirmPasswordFormKey.currentState.validate()) {
                     UserData newUser = UserData(
                       name: nomeController.text,
                       email: emailController.text,
@@ -177,13 +174,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         builder: (context) => LoginScreen(),
                       ),
                     );
-                    return true;
-                  },
-                  backgroundColor: Theme.of(context).backgroundColor,
-                  height: 51,
-                  width: screenAvaliableWidth * 0.95,
-                  text: 'Cadastrar',
-                  textColor: Colors.white),
+                  }
+
+                  return true;
+                },
+                backgroundColor: Theme.of(context).backgroundColor,
+                height: 51,
+                width: screenAvaliableWidth * 0.95,
+                text: 'Cadastrar',
+                textColor: Colors.white,
+              ),
             ],
           ),
         ),

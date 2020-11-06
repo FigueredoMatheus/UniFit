@@ -44,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
             children: [
               Container(
                 width: screenAvaliableWidth,
-                height: screenAvaliableHeight * 0.37,
+                height: screenAvaliableHeight * 0.33,
                 child: Image.asset(
                   'assets/images/Logo.png',
                   fit: BoxFit.fitHeight,
@@ -53,10 +53,10 @@ class _LoginScreenState extends State<LoginScreen> {
               Center(
                 child: Text(
                   'UniFit',
+                  textScaleFactor: 1,
                   style: TextStyle(
                     fontFamily: 'Inter',
-                    fontSize:
-                        50 * (MediaQuery.of(context).textScaleFactor * 0 + 1),
+                    fontSize: 50,
                     fontWeight: FontWeight.w600,
                     color: Theme.of(context).backgroundColor,
                   ),

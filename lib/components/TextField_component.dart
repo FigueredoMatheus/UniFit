@@ -31,7 +31,7 @@ class ComponentTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).textScaleFactor != 1 ? 55 : 50,
+      height: 50,
       width: width,
       decoration: BoxDecoration(
         shape: BoxShape.rectangle,
@@ -49,8 +49,7 @@ class ComponentTextField extends StatelessWidget {
             if (value.isEmpty) {
               return erroEmptyTextField;
             } else if (erroUsedText != null &&
-                userList.any((element) => element.email == value) &&
-                erroUsedText != null) {
+                userList.any((element) => element.email == value)) {
               return erroUsedText;
             } else if ((!RegExp(
                             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
@@ -67,7 +66,7 @@ class ComponentTextField extends StatelessWidget {
           obscureText: obscureText,
           cursorColor: Theme.of(context).backgroundColor,
           style: TextStyle(
-            fontSize: 20 * (MediaQuery.of(context).textScaleFactor * 0 + 1),
+            fontSize: 20,
           ),
           decoration: InputDecoration(
             hintText: hintText,

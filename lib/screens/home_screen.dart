@@ -1,7 +1,6 @@
 import 'package:UniFit/components/alertDialog_component.dart';
 import 'package:UniFit/components/appBar_component.dart';
 import 'package:UniFit/screens/imc_tmb_screen.dart';
-import 'package:UniFit/screens/login_screen.dart';
 import 'package:UniFit/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 import '../components/homeCard_component.dart';

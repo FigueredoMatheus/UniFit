@@ -30,7 +30,6 @@ class ProfileScreen extends StatelessWidget {
         appBarSize(scaffoldAppBar);
 
     final double screenAvaliableWidth = MediaQuery.of(context).size.width;
-
     return SafeArea(
       child: Scaffold(
         appBar: scaffoldAppBar,
@@ -38,20 +37,22 @@ class ProfileScreen extends StatelessWidget {
           children: [
             Container(
               width: double.infinity,
-              height: screenAvaliableHeight * 0.25,
+              height: (screenAvaliableHeight) * 0.25,
               color: Theme.of(context).backgroundColor,
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                SizedBox(height: 10),
+                SizedBox(
+                  height: (screenAvaliableHeight) * 0.05,
+                ),
                 CircleAvatar(
                   backgroundColor: Color.fromRGBO(232, 232, 232, 1),
-                  radius: 80,
+                  radius: screenAvaliableHeight * 0.145,
                   child: Icon(
                     Icons.person,
                     color: Theme.of(context).backgroundColor,
-                    size: 150,
+                    size: screenAvaliableHeight * 0.26,
                   ),
                 ),
                 SizedBox(height: 35),
@@ -79,7 +80,9 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: screenAvaliableHeight * 0.11),
+                SizedBox(
+                  height: screenAvaliableHeight * 0.11,
+                ),
                 Center(
                   child: Container(
                     width: screenAvaliableWidth * 0.89,

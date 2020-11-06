@@ -17,8 +17,6 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     final double screenAvaliableWidth = MediaQuery.of(context).size.width;
-    final double screenAvaliableHeight =
-        MediaQuery.of(context).size.height - MediaQuery.of(context).padding.top;
 
     return SafeArea(
       child: Scaffold(

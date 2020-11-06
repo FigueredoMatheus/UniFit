@@ -323,9 +323,10 @@ class _ImcTmbScreenState extends State<ImcTmbScreen> {
                 elevation: 0,
               ),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 5),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.baseline,
               children: [
                 Column(
                   children: [
@@ -346,9 +347,9 @@ class _ImcTmbScreenState extends State<ImcTmbScreen> {
                       chartValue: chartValue(_imcValue),
                       statusText: chartStatus,
                     ),
-                    SizedBox(
-                      height: 20,
-                    ),
+                    // SizedBox(
+                    //   height: 20,
+                    // ),
                   ],
                 ),
                 Column(
@@ -389,13 +390,16 @@ class _ImcTmbScreenState extends State<ImcTmbScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: 155,
-                    ),
+                    // SizedBox(
+                    //   height: 155,
+                    // ),
                   ],
                 ),
               ],
-            )
+            ),
+            SizedBox(
+              height: 10,
+            ),
           ],
         ),
       ),
