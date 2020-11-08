@@ -83,26 +83,24 @@ class _LoginScreenState extends State<LoginScreen> {
                 text: 'Entrar',
                 textColor: Colors.white,
                 snackbarText: 'Senha ou e-mail incorretos, tente novamente.',
-                height: 51,
+                height: 50,
                 width: screenAvaliableWidth * 0.31,
                 backgroundColor: Theme.of(context).backgroundColor,
                 onPressed: () {
-                  if (!_emailFormKey.currentState.validate() ||
-                      !_passwordFormKey.currentState.validate()) {
-                    return true;
-                  }
+                  if (_emailFormKey.currentState.validate() &&
+                      _passwordFormKey.currentState.validate()) {
+                    if (validateUser()) {
+                      LoggedUser user = LoggedUser();
+                      user.login(userData: userList[_userListIndex]);
 
-                  if (validateUser()) {
-                    LoggedUser user = LoggedUser();
-                    user.login(userData: userList[_userListIndex]);
-
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => HomeScreen(),
-                      ),
-                    );
-                    return true;
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HomeScreen(),
+                        ),
+                      );
+                      return true;
+                    }
                   }
 
                   return false;

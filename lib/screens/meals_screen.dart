@@ -1,5 +1,5 @@
 import 'package:UniFit/components/appBar_component.dart';
-import 'package:UniFit/components/meals_component.dart';
+import 'package:UniFit/components/mealsRow_component.dart';
 import 'package:UniFit/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
