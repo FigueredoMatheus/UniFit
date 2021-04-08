@@ -160,9 +160,10 @@ class _ImcTmbScreenState extends State<ImcTmbScreen> {
               height: 50,
               width: screenAvaliableWidth * 0.952,
               decoration: BoxDecoration(
-                  shape: BoxShape.rectangle,
-                  color: Color.fromRGBO(232, 232, 232, 1),
-                  borderRadius: BorderRadius.circular(100)),
+                shape: BoxShape.rectangle,
+                color: Color.fromRGBO(232, 232, 232, 1),
+                borderRadius: BorderRadius.circular(100),
+              ),
               padding: const EdgeInsets.only(left: 19),
               margin: const EdgeInsets.all(5),
               child: Form(

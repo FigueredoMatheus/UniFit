@@ -34,7 +34,7 @@ class ButtonComponent extends StatelessWidget {
               duration: Duration(seconds: 3),
               backgroundColor: Theme.of(context).backgroundColor,
             );
-            Scaffold.of(context).showSnackBar(snackBar);
+            ScaffoldMessenger.of(context).showSnackBar(snackBar);
           }
         },
         shape: RoundedRectangleBorder(
